@@ -1,9 +1,7 @@
 import network
 
 
-def connectWiFi():
-    ssid = 'Romaniuk'
-    password = '26081998'
+def connectWiFi(ssid,password):
 
     # Підключення до Wi-Fi
     wifi = network.WLAN(network.STA_IF)
