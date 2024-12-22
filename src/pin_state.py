@@ -20,7 +20,7 @@ async def send_inputs():
         # Зчитуємо всі входи
         data = {pin: inputs[pin].value() for pin in inputs}
         # try:
-        await Remote.send_request('pin_status', data)
+        await Remote.send_request('pin_status', data=data)
         # except Exception as e:
         #     print("Failed to send data:", e)
         await asyncio.sleep(5)  # Інтервал між відправками
