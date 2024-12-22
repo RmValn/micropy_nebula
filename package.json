@@ -1,9 +1,5 @@
 {
     "name": "nebula_micropy",
-    "description": "A package for MicroPython",
-    "version": "0.0.1",
-    "author": "RmValn",
-    "license": "MIT",
+    "version": "1.0.0",
     "src": "./src"
-  }
-  
+}
