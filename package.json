@@ -1,7 +1,7 @@
 {
     "urls": [
         [
-            "src/*",
+            "hardware.py",
             "github:RmValn/nebula_micropy/"
         ]
     ],
