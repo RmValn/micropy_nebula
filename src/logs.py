@@ -13,7 +13,7 @@ class Log:
 
             # Формуємо HTTP-запит
         print('тут блять')
-        await Remote.send_request('logs', log_message)
+        await Remote.send_request('logs', data=log_message)
         # except Exception as e:
         #     print(f"Error: {e}")
 

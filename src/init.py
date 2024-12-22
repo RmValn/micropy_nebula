@@ -5,9 +5,10 @@ from .servers_interact.remote import Remote
 from .logs import Log
 from .pin_state import send_inputs
 from .ota import OTA
+import network
 class Init:
     def __init__(self,ssid,password,server_ip):
-        self.connectWiFi(ssid, password)
+        print(Init.connectWiFi(ssid, password))
         asyncio.run(Init.main(server_ip))
 
     @staticmethod
@@ -15,3 +16,16 @@ class Init:
         await Log.clear_logs()
         await asyncio.gather(Server.restart(),OTA.check_for_update(server_ip),send_inputs())
         print("Програма готова до роботи.")
+        
+    @staticmethod
+    def connectWiFi(ssid,password):
+        print('прейом')
+        # Підключення до Wi-Fi
+        wifi = network.WLAN(network.STA_IF)
+        wifi.active(True)
+        wifi.connect(ssid, password)
+
+        # Чекати на підключення
+        while not wifi.isconnected():
+            pass
+        return wifi.ifconfig()

@@ -2,11 +2,12 @@ import urequests
 import ujson
 import uasyncio as asyncio
 class Remote:
-
+    SERVER_URL = None
 
     @classmethod
-    async def send_request(cls, server_url, path, data=None):
-        url = f"http://{server_url}/{path}"
+    async def send_request(cls, path, server_url=None, data=None):
+        cls.SERVER_URL = server_url
+        url = f"http://{cls.SERVER_URL}/{path}"
         headers = {"Content-Type": "application/json"}
 
         if data:
