@@ -7,7 +7,7 @@ from .pin_state import send_inputs
 from .ota import OTA
 class Init:
     def __init__(self,ssid,password,server_ip):
-        connectWiFi(ssid, password)
+        self.connectWiFi(ssid, password)
         asyncio.run(Init.main(server_ip))
 
     @staticmethod
