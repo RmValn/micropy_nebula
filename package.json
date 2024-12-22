@@ -2,7 +2,7 @@
     "urls": [
         [
             "hardware.py",
-            "github:RmValn/nebula_micropy/"
+            "github:RmValn/nebula_micropy"
         ]
     ],
     "version": "1.0.0"
