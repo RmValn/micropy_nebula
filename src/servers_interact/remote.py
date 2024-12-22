@@ -6,7 +6,7 @@ class Remote:
 
     @classmethod
     async def send_request(cls, server_url, path, data=None):
-        url = f"http://{cls.SERVER_URL}/{path}"
+        url = f"http://{server_url}/{path}"
         headers = {"Content-Type": "application/json"}
 
         if data:
