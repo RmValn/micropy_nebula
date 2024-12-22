@@ -9,6 +9,10 @@
             "github:RmValn/nebula_micropy/src/hardware.py"
         ],
         [
+            "nebula/init.py",
+            "github:RmValn/nebula_micropy/src/init.py"
+        ],
+        [
             "nebula/__init__.py",
             "github:RmValn/nebula_micropy/src/__init__.py"
         ],
