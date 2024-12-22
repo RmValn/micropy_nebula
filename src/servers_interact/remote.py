@@ -9,6 +9,10 @@ class Remote:
         if server_url:
             cls.SERVER_URL = server_url
         url = f"http://{cls.SERVER_URL}/{path}"
+        if not cls.SERVER_URL:
+            raise ValueError("SERVER_URL не встановлено. Передайте server_url.")
+
+        print(f"Використовується сервер: {cls.SERVER_URL}")
         headers = {"Content-Type": "application/json"}
 
         if data:
