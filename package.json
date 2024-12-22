@@ -1,5 +1,9 @@
 {
     "name": "nebula_micropy",
     "version": "1.0.0",
-    "src": "./src"
-}
+    "description": "Nebula MicroPython package for managing devices like NodeMCU and Raspberry Pi.",
+    "keywords": ["micropython", "nebula", "nodeMCU", "raspberry pi"],
+    "src": "./src",
+    "dependencies": {}
+  }
+  
