@@ -15,6 +15,7 @@ class Remote:
                 print(f"Невідформатовано - {data}")
                 data = ujson.dumps({"log": data})
                 print(f"JSON - {data}")
+                print(url)
                 response = urequests.post(url, headers=headers, data=data)
                 print(f"Запит курва єбать - {data}")
             else:
