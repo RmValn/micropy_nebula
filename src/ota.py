@@ -3,7 +3,7 @@ import machine
 import urequests
 import gc
 from config import version as CURRENT_VERSION 
-from logs import Log
+from .logs import Log
 # from servers_interact.remote import Remote
 SERVER_URL = "http://192.168.0.20:5000"
 
