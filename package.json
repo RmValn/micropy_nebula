@@ -35,6 +35,10 @@
         [
             "nebula/servers_interact/remote.py",
             "github:RmValn/nebula_micropy/src/servers_interact/remote.py"
+        ],
+        [
+            "nebula/servers_interact/__init__.py",
+            "github:RmValn/nebula_micropy/src/servers_interact/__init__.py"
         ]
     ],
     "version": "1.0.0"
