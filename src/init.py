@@ -13,7 +13,7 @@ class Init:
 
     @staticmethod
     async def main(server_ip):
-        await Log.clear_logs(server_ip)
+        Log.clear_logs(server_ip)
         await asyncio.gather(Server.restart(),OTA.check_for_update(server_ip),send_inputs())
         print("Програма готова до роботи.")
         
