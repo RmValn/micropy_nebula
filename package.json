@@ -1,8 +1,16 @@
 {
     "urls": [
         [
-            "src/hardware.py",
-            "github:RmValn/nebula_micropy"
+            "config.py",
+            "github:RmValn/nebula_micropy/src/config.py"
+        ],
+        [
+            "hardware.py",
+            "github:RmValn/nebula_micropy/src/hardware.py"
+        ],
+        [
+            "wifi.py",
+            "github:RmValn/nebula_micropy/src/wifi.py"
         ]
     ],
     "version": "1.0.0"
