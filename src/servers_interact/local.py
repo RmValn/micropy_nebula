@@ -1,6 +1,5 @@
 import uasyncio as asyncio
 import gc
-from ota import check_for_update
 
 class Router:
     instance = None
@@ -50,7 +49,7 @@ class Router:
                 response = "HTTP/1.1 200 OK\r\n\r\nОновлення запущено"
                 writer.write(response.encode('utf-8'))
                 await writer.drain()
-                await check_for_update()
+                # await check_for_update()
                 await writer.aclose()
                 return
             # Виклик обробника маршруту
