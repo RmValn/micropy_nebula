@@ -1,7 +1,7 @@
 {
     "urls": [
         [
-            "src",
+            "src/*",
             "github:RmValn/nebula_micropy/"
         ]
     ],
