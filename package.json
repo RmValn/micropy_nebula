@@ -1,16 +1,40 @@
 {
     "urls": [
         [
-            "config.py",
+            "nebula/config.py",
             "github:RmValn/nebula_micropy/src/config.py"
         ],
         [
-            "hardware.py",
+            "nebula/hardware.py",
             "github:RmValn/nebula_micropy/src/hardware.py"
         ],
         [
-            "wifi.py",
+            "nebula/__init__.py",
+            "github:RmValn/nebula_micropy/src/__init__.py"
+        ],
+        [
+            "nebula/logs.py",
+            "github:RmValn/nebula_micropy/src/logs.py"
+        ],
+        [
+            "nebula/ota.py",
+            "github:RmValn/nebula_micropy/src/ota.py"
+        ],
+        [
+            "nebula/pin_state.py",
+            "github:RmValn/nebula_micropy/src/pin_state.py"
+        ],
+        [
+            "nebula/wifi.py",
             "github:RmValn/nebula_micropy/src/wifi.py"
+        ],
+        [
+            "nebula/servers_interact/local.py",
+            "github:RmValn/nebula_micropy/src/servers_interact/local.py"
+        ],
+        [
+            "nebula/servers_interact/remote.py",
+            "github:RmValn/nebula_micropy/src/servers_interact/remote.py"
         ]
     ],
     "version": "1.0.0"
