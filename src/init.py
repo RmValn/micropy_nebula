@@ -11,7 +11,7 @@ class Init:
         asyncio.run(Init.main(server_ip))
 
     @classmethod
-    async def main(server_ip):
+    async def main(cls,server_ip):
         await Log.clear_logs()
         await asyncio.gather(Server.restart(),OTA.check_for_update(server_ip),send_inputs())
         print("Програма готова до роботи.")
