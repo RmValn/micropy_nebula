@@ -1,7 +1,7 @@
 from machine import Pin
 import urequests
 import uasyncio as asyncio
-from servers_interact.remote import Remote
+from .servers_interact.remote import Remote
 # Входи
 inputs = {
     "D0": Pin(16, Pin.IN),

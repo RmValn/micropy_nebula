@@ -1,6 +1,6 @@
 import uasyncio as asyncio
 import json
-from servers_interact.remote import Remote
+from .servers_interact.remote import Remote
 
 class Log:
 
