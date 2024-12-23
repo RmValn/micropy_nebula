@@ -1,5 +1,5 @@
-from .init import Init
+from .nebula import Nebula
 
 __all__ = [
-    "Init",
+    "Nebula",
 ]
