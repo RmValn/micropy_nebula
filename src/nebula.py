@@ -10,6 +10,7 @@ import network
 class Nebula(Router):
     def __init__(self, ssid, password, server_ip):
         print(Nebula.connectWiFi(ssid, password))
+        super().__init__(self)
         asyncio.create_task(self.start_async_tasks(server_ip))
 
     async def start_async_tasks(self, server_ip):
