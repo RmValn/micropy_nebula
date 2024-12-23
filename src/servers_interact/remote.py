@@ -7,12 +7,14 @@ class Remote:
     @classmethod
     async def send_request(cls, path, server_url=None, data=None):
         if server_url:
-            cls.SERVER_URL = server_url
-        url = f"http://{cls.SERVER_URL}/{path}"
+            addr = server_url
+        else:
+            addr = cls.SERVER_URL
+        url = f"http://{addr}/{path}"
         if not cls.SERVER_URL:
             raise ValueError("SERVER_URL не встановлено. Передайте server_url.")
 
-        print(f"Використовується сервер: {cls.SERVER_URL}")
+        print(f"Використовується сервер: {addr}")
         headers = {"Content-Type": "application/json"}
 
         if data:

@@ -18,10 +18,10 @@ class Log:
         #     print(f"Error: {e}")
 
     @classmethod
-    async def clear_logs(cls, server_ip):
+    async def clear_logs(cls):
         """Надсилає запит на очищення логів."""
         try:
-            await Remote.send_request('clear_logs',server_url=server_ip)
+            await Remote.send_request('clear_logs')
         except Exception as e:
             print(f"Error cleaning logs: {e}")
             await cls.send_log(f"Error cleaning logs: {e}")
