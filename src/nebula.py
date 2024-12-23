@@ -1,6 +1,6 @@
 import uasyncio as asyncio
 from .wifi import connectWiFi
-from .servers_interact.local import Server, Router
+from .servers_interact.local import Router
 from .servers_interact.remote import Remote
 from .logs import Log
 from .pin_state import send_inputs
@@ -19,7 +19,7 @@ class Nebula(Router):
             Remote.SERVER_URL = server_ip
             await Log.clear_logs()
             await asyncio.gather(
-                Server.restart(),
+                Router.restart(),
                 OTA.check_for_update(),
                 send_inputs()
             )
