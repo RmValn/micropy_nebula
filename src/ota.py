@@ -52,7 +52,7 @@ class OTA:
         """Завантажує нову версію програми та оновлює main.py."""
         try:
             await Log.send_log("Dowloading file...")
-            response = Remote.send_request('main.py')
+            response = Remote.send_request('get_prg',method='GET')
             new_version = server_version
             if response.status_code == 200:
                 with open("main.py", "w") as f:
