@@ -15,12 +15,13 @@ SERVER_URL = "http://your-flask-server-ip/inputs_status"
 
 
 async def send_inputs():
-    while True:
-        print('Надсилання інпутів')
-        # Зчитуємо всі входи
-        data = {pin: inputs[pin].value() for pin in inputs}
-        # try:
-        await Remote.send_request('pin_status', data=data)
-        # except Exception as e:
-        #     print("Failed to send data:", e)
-        await asyncio.sleep(5)  # Інтервал між відправками
+    pass
+    # while True:
+    #     print('Надсилання інпутів')
+    #     # Зчитуємо всі входи
+    #     data = {pin: inputs[pin].value() for pin in inputs}
+    #     # try:
+    #     await Remote.send_request('pin_status', data=data)
+    #     # except Exception as e:
+    #     #     print("Failed to send data:", e)
+    #     await asyncio.sleep(5)  # Інтервал між відправками
