@@ -16,6 +16,8 @@ class Router:
 
     @classmethod
     def get_instance(cls):
+        if not cls._instance:
+            raise ValueError("Router instance not initialized!")
         return cls._instance
 
     def route(self, path):
@@ -38,8 +40,7 @@ class Router:
         except asyncio.CancelledError:
             print("Restart task was cancelled.")
 
-    @classmethod
-    async def __handle_request(cls, reader, writer):
+    async def __handle_request(self, reader, writer):
         """Обробка HTTP-запиту."""
         try:
             request = await reader.read(1024)
@@ -57,11 +58,11 @@ class Router:
                 await writer.aclose()
                 return
             # Виклик обробника маршруту
-            print(cls._instance)
-            print(f"Registered routes: {cls.get_instance().routes}")
+            print(self)
+            print(f"Registered routes: {self.routes}")
             print(f"Requested path: {path}")
-            if path in cls.get_instance().routes:
-                await cls.get_instance().routes[path](writer)
+            if path in self.routes:
+                await self.routes[path](writer)
             else:
                 response = "HTTP/1.1 404 Not Found\r\n\r\nNot found"
                 writer.write(response.encode("utf-8"))
@@ -82,7 +83,7 @@ class Server:
             gc.collect()
             print('Server stoped')
         print('добри')
-        cls.server = await asyncio.start_server(Router.__handle_request, "0.0.0.0", 80)
+        cls.server = await asyncio.start_server(Router.get_instance().__handle_request, "0.0.0.0", 80)
         print(f"OTA-server started on http://0.0.0.0:80 {cls.server}")
         while True:
             await asyncio.sleep(1) 
