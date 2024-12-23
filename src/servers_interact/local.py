@@ -31,14 +31,6 @@ class Router:
             return func
         return decorator
     
-    async def schedule_restart(self):
-        """Відкладений перезапуск сервера."""
-        try:
-            print('а тут хтось є?')
-            await asyncio.sleep(0.5)  # Час для реєстрації всіх маршрутів
-            await Server.restart(self)
-        except asyncio.CancelledError:
-            print("Restart task was cancelled.")
 
     async def __handle_request(self, reader, writer):
         """Обробка HTTP-запиту."""
@@ -79,7 +71,7 @@ class Router:
 
     @classmethod
     async def restart_server(cls):
-        cls._instance.restart()
+        await cls._instance.restart()
 
 
 class Server:
