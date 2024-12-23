@@ -34,6 +34,7 @@ class Remote:
             response = urequests.get(url, headers=headers)
 
         print("Відповідь сервера:", response.text)
+        print(f'Burda - {type(response)}')
         response.close()
         return response
                 

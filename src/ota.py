@@ -26,7 +26,7 @@ class OTA:
                     await Log.send_log("Same version. No need to update")
             else:
                 await Log.send_log(response.content)
-            response.close()
+            print(type(response))
         except Exception as e:
             print(f"Checking update error: {e}")
             await Log.send_log(f"Checking update error: {e}")
