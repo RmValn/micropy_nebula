@@ -23,6 +23,5 @@ class Remote:
         elif method == 'GET':
             response = urequests.get(url, headers=headers)
         print("Відповідь сервера:", response.text)
-        response.close()
         return response
                 

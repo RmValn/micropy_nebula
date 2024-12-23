@@ -26,7 +26,7 @@ class OTA:
                     await Log.send_log("Same version. No need to update")
             else:
                 await Log.send_log(response.content)
-            print(type(response))
+            response.close()
         except Exception as e:
             print(f"Checking update error: {e}")
             await Log.send_log(f"Checking update error: {e}")
@@ -57,9 +57,9 @@ class OTA:
             if response.status_code == 200:
                 with open("main.py", "w") as f:
                     f.write(response.text)
-                response.close()
                 await Log.send_log("Flie main.py updated!")
                 await cls.update_config_version(new_version) 
+                response.close()
                 await Log.send_log("Rebooting for apply...")
                 asyncio.sleep(2)
                 machine.reset()  # Перезавантаження контролера
