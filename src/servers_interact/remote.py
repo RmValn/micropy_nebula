@@ -5,7 +5,7 @@ class Remote:
     SERVER_URL = None
 
     @classmethod
-    async def send_request(cls, path, server_url=None, data=None):
+    async def send_request(cls, path, server_url=None, data=None, method='POST'):
         if server_url:
             addr = server_url
         else:
@@ -16,25 +16,13 @@ class Remote:
 
         print(f"Використовується сервер: {addr}")
         headers = {"Content-Type": "application/json"}
-
         if data:
-            if path == "logs":
-                print(f"Невідформатовано - {data}")
-                data = ujson.dumps({"log": data})
-                print(f"JSON - {data}")
-                print(url)
-                response = urequests.post(url, headers=headers, data=data)
-                print(f"Запит курва єбать - {data}")
-            else:
-                data = ujson.dumps(data)
-                response = urequests.post(url, headers=headers, data=data)
-                print(f"pin_status ------- {data}")
-        else:
-            print(f"ой курва, url = {url}")
+            data = ujson.dumps(data)
+        if method == 'POST':
+            response = urequests.post(url, headers=headers, data=data)
+        elif method == 'GET':
             response = urequests.get(url, headers=headers)
-
         print("Відповідь сервера:", response.text)
-        print(f'Burda - {type(response)}')
         response.close()
         return response
                 
