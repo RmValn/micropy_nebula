@@ -30,7 +30,7 @@ class Remote:
                 response = urequests.post(url, headers=headers, data=data)
                 print(f"pin_status ------- {data}")
         else:
-            print("ой курва")
+            print(f"ой курва, url = {url}")
             response = urequests.post(url, headers=headers)
 
         print("Відповідь сервера:", response.text)
