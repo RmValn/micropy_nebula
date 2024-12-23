@@ -4,14 +4,17 @@ import gc
 class Router:
     _instance = None
 
-    def __new__(cls, *args, **kwargs):
-        print(f"Router.__new__ called. Current _instance: {cls._instance}")
-        if not cls._instance:
-            print("Creating a new Router instance.")
-            cls._instance = super().__new__(cls)
-            cls._instance.routes = {}
-        print(f"New _instance: {cls._instance}")
-        return cls._instance
+    # def __new__(cls, *args, **kwargs):
+    #     print(f"Router.__new__ called. Current _instance: {cls._instance}")
+    #     if not cls._instance:
+    #         print("Creating a new Router instance.")
+    #         cls._instance = super().__new__(cls)
+    #         cls._instance.routes = {}
+    #     print(f"New _instance: {cls._instance}")
+    #     return cls._instance
+    def __init__(self):
+        print('я тут')
+        Router._instance = self
     
 
     @classmethod
