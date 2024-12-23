@@ -12,9 +12,11 @@ class Router:
     #         cls._instance.routes = {}
     #     print(f"New _instance: {cls._instance}")
     #     return cls._instance
-    def __init__(self):
+    def __init__(self, obj):
         print('я тут')
-        Router._instance = self
+        print(self)
+        print(obj)
+        Router._instance = obj
     
 
     @classmethod
