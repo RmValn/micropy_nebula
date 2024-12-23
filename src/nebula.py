@@ -46,9 +46,6 @@ class Nebula(Router):
     def ensure_event_loop_running():
         """Запускає цикл подій, якщо він ще не запущений."""
         try:
-            loop = asyncio.get_event_loop()
-            if not loop.is_running():
-                print("Запуск основного циклу asyncio.")
-                loop.run_forever()
+            asyncio.get_event_loop().run_forever()
         except Exception as e:
             print(f"Помилка під час запуску циклу подій: {e}")
