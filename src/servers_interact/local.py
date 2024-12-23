@@ -10,6 +10,7 @@ class Router:
             print("Creating a new Router instance.")
             cls._instance = super().__new__(cls)
             cls._instance.routes = {}
+        print(f"New _instance: {cls._instance}")
         return cls._instance
     
     # def __init__(self):
