@@ -35,4 +35,5 @@ class Remote:
 
         print("Відповідь сервера:", response.text)
         response.close()
+        return response
                 
