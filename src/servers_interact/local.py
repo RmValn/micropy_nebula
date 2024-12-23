@@ -24,6 +24,7 @@ class Router:
         return cls._instance
 
     def route(self, path):
+        print(f"self: {self}")
         """Декоратор для реєстрації маршруту."""
         self.route_called = True
         def decorator(func):
