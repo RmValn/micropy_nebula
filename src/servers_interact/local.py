@@ -18,9 +18,7 @@ class Router:
 
     @classmethod
     def get_instance(cls):
-        if cls.instance is None:
-            cls.instance = cls()
-        return cls.instance
+        return cls._instance
 
     def route(self, path):
         """Декоратор для реєстрації маршруту."""
