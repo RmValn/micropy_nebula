@@ -10,11 +10,11 @@ class Router:
             cls._instance.routes = {}
         return cls._instance
     
-    def __init__(self):
-        self.routes = {}  # Глобальний словник маршрутів
-        self.restart_task = None
-        self.route_called = False
-        print("Router initialized")
+    # def __init__(self):
+    #     self.routes = {}  # Глобальний словник маршрутів
+    #     self.restart_task = None
+    #     self.route_called = False
+    #     print("Router initialized")
 
     @classmethod
     def get_instance(cls):
