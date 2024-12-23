@@ -17,6 +17,10 @@
             "github:RmValn/nebula_micropy/src/logs.py"
         ],
         [
+            "nebula/nebula.py",
+            "github:RmValn/nebula_micropy/src/nebula.py"
+        ],
+        [
             "nebula/ota.py",
             "github:RmValn/nebula_micropy/src/ota.py"
         ],
