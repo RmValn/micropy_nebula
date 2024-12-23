@@ -14,7 +14,7 @@ class OTA:
         try:
             print("Checking update...")
             await Log.send_log("Checking update...")
-            response = Remote.send_request('version')
+            response = await Remote.send_request('version')
             if response.status_code == 200:
                 server_version = response.json().get("version")
                 if server_version != CURRENT_VERSION:
