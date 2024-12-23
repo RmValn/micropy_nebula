@@ -37,7 +37,7 @@ class OTA:
     async def update_config_version(cls, new_version):
         """Оновлює версію програми в config.py."""
         try:
-            with open("config.py", "w") as f:
+            with open("/lib/nebula/config.py", "w") as f:
                 f.write(f'version = "{new_version}"\n')
             await Log.send_log("Unpated versioawaitn in config.py!")
         except Exception as e:
