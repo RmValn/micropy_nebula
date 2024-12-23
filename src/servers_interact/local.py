@@ -5,8 +5,9 @@ class Router:
     _instance = None
 
     def __new__(cls, *args, **kwargs):
-        print('курва сука блять')
+        print(f"Router.__new__ called. Current _instance: {cls._instance}")
         if not cls._instance:
+            print("Creating a new Router instance.")
             cls._instance = super().__new__(cls)
             cls._instance.routes = {}
         return cls._instance
