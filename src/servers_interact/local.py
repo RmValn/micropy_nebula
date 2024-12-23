@@ -58,6 +58,7 @@ class Router:
                 await writer.aclose()
                 return
             # Виклик обробника маршруту
+            print(cls._instance)
             print(f"Registered routes: {cls.get_instance().routes}")
             print(f"Requested path: {path}")
             if path in cls.get_instance().routes:
