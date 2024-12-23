@@ -9,13 +9,18 @@ import network
 class Init:
     def __init__(self,ssid,password,server_ip):
         print(Init.connectWiFi(ssid, password))
-        asyncio.run(Init.main(server_ip))
+        asyncio.run(self.start_async_tasks(server_ip))
 
-    @staticmethod
-    async def main(server_ip):
+    async def start_async_tasks(self, server_ip):
+        """Запуск асинхронних завдань."""
+        print("Програма почала роботу.")
         Remote.SERVER_URL = server_ip
         await Log.clear_logs()
-        await asyncio.gather(Server.restart(),OTA.check_for_update(),send_inputs())
+        await asyncio.gather(
+            Server.restart(), 
+            OTA.check_for_update(),
+            send_inputs()
+        )
         print("Програма готова до роботи.")
         
     @staticmethod
