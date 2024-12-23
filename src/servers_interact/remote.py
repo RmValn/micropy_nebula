@@ -22,6 +22,7 @@ class Remote:
             response = urequests.post(url, headers=headers, data=data)
         elif method == 'GET':
             response = urequests.get(url, headers=headers)
+        print(f"Запит: {path}, {data}, {method}")
         print("Відповідь сервера:", response.text)
         return response
                 
