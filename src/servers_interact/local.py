@@ -85,6 +85,7 @@ class Server:
             await cls.server.wait_closed()
             gc.collect()
             print('Server stoped')
+        print('добри')
         cls.server = await asyncio.start_server(Router.__handle_request, "0.0.0.0", 80)
         print(f"OTA-server started on http://0.0.0.0:80 {cls.server}")
         while True:
