@@ -19,7 +19,7 @@ class Nebula(Router):
             Remote.SERVER_URL = server_ip
             await Log.clear_logs()
             await asyncio.gather(
-                Router.restart(),
+                Router.restart_server(),
                 OTA.check_for_update(),
                 send_inputs()
             )

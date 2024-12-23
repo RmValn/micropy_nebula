@@ -70,13 +70,16 @@ class Router:
         finally:
             await writer.aclose()
     
-    @classmethod
-    async def restart(cls):
-        print(f"Restart called. Router._instance: {Router._instance}")
-        await asyncio.start_server(cls.get_instance().__handle_request, "0.0.0.0", 80)
-        print(f"OTA-server started on http://0.0.0.0:80 {cls.server}")
+    async def restart(self):
+        print(f"Restart called. Router._instance: {self}")
+        await asyncio.start_server(self.__handle_request, "0.0.0.0", 80)
+        print(f"OTA-server started on http://0.0.0.0:80")
         while True:
             await asyncio.sleep(1) 
+
+    @classmethod
+    async def restart_server(cls):
+        cls._instance.restart()
 
 
 class Server:
