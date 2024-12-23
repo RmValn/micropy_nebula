@@ -13,11 +13,6 @@ class Router:
         print(f"New _instance: {cls._instance}")
         return cls._instance
     
-    # def __init__(self):
-    #     self.routes = {}  # Глобальний словник маршрутів
-    #     self.restart_task = None
-    #     self.route_called = False
-    #     print("Router initialized")
 
     @classmethod
     def get_instance(cls):
@@ -80,6 +75,7 @@ class Server:
 
     @classmethod
     async def restart(cls):
+        print(f"Restart called. Router._instance: {Router._instance}")
         if cls.server:
             cls.server.close()
             await cls.server.wait_closed()
