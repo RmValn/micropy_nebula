@@ -9,7 +9,7 @@ import network
 class Init:
     def __init__(self,ssid,password,server_ip):
         print(Init.connectWiFi(ssid, password))
-        asyncio.run(self.start_async_tasks(server_ip))
+        self.async_task = asyncio.create_task(self.start_async_tasks(server_ip))
 
     async def start_async_tasks(self, server_ip):
         """Запуск асинхронних завдань."""
