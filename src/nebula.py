@@ -27,6 +27,9 @@ class Nebula(Router):
             print("Програма готова до роботи.")
         except Exception as e:
             print(f"Помилка під час виконання завдань: {e}")
+        finally:
+            # Запуск циклу подій після завершення ініціалізації
+            self.run_event_loop()
 
     @staticmethod
     def connectWiFi(ssid, password):
@@ -43,5 +46,10 @@ class Nebula(Router):
     
     @staticmethod
     def run_event_loop():
+        """Запускає цикл подій."""
         print("Запуск циклу подій...")
-        asyncio.get_event_loop().run_forever()
+        loop = asyncio.get_event_loop()
+        try:
+            loop.run_forever()
+        except Exception as e:
+            print(f"Помилка у циклі подій: {e}")
