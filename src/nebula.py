@@ -40,3 +40,8 @@ class Nebula(Router):
             pass
         print('Wi-Fi підключено:', wifi.ifconfig())
         return wifi.ifconfig()
+    
+    @staticmethod
+    def run_event_loop():
+        print("Запуск циклу подій...")
+        asyncio.get_event_loop().run_forever()
