@@ -9,9 +9,32 @@ import network
 
 class Nebula(Router):
     def __init__(self, ssid, password, server_ip):
-        print(Nebula.connectWiFi(ssid, password))
         super().__init__()
-        asyncio.create_task(self.start_async_tasks(server_ip))
+        asyncio.run(self.initialize(ssid, password, server_ip))
+
+    async def initialize(self, ssid, password, server_ip):
+        """Ініціалізація Wi-Fi та запуск асинхронних завдань."""
+        print("Підключення до Wi-Fi...")
+        wifi_config = await self.connectWiFi(ssid, password)
+        print(f"Wi-Fi підключено: {wifi_config}")
+
+        # Запуск серверів та інших задач
+        await self.start_async_tasks(server_ip)
+
+        # Запуск циклу подій
+        self.run_event_loop()
+
+    @staticmethod
+    async def connectWiFi(ssid, password):
+        """Асинхронне підключення до Wi-Fi."""
+        wifi = network.WLAN(network.STA_IF)
+        wifi.active(True)
+        wifi.connect(ssid, password)
+
+        while not wifi.isconnected():
+            await asyncio.sleep(0.1)  # Замість блокуючого `pass`
+
+        return wifi.ifconfig()
 
     async def start_async_tasks(self, server_ip):
         """Запуск асинхронних завдань."""
@@ -27,24 +50,7 @@ class Nebula(Router):
             print("Програма готова до роботи.")
         except Exception as e:
             print(f"Помилка під час виконання завдань: {e}")
-        finally:
-            print('бля')
-            # Запуск циклу подій після завершення ініціалізації
-            self.run_event_loop()
 
-    @staticmethod
-    def connectWiFi(ssid, password):
-        print('Підключення до Wi-Fi...')
-        wifi = network.WLAN(network.STA_IF)
-        wifi.active(True)
-        wifi.connect(ssid, password)
-
-        # Чекаємо на підключення
-        while not wifi.isconnected():
-            pass
-        print('Wi-Fi підключено:', wifi.ifconfig())
-        return wifi.ifconfig()
-    
     @staticmethod
     def run_event_loop():
         """Запускає цикл подій."""
