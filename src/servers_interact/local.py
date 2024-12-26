@@ -21,7 +21,6 @@ class Router:
         def decorator(func):
             self.routes[path] = func
             print(f"Route registered: {path} -> {func}")
-            Log.send_log(f"Route registered: {path} -> {func}")
             return func
         return decorator
     
@@ -31,13 +30,13 @@ class Router:
             request = await reader.read(1024)
             request = request.decode("utf-8")
             print(f"Request: {request}")
-            Log.send_log(f"Request: {request}")
+            await Log.send_log(f"Request: {request}")
 
             # Парсинг шляху
             path = request.split(" ")[1]
             if "POST /update_signal" in request:
                 print("Сигнал оновлення отримано!")
-                Log.send_log("Сигнал оновлення отримано!")
+                await Log.send_log("Сигнал оновлення отримано!")
                 response = "HTTP/1.1 200 OK\r\n\r\nОновлення запущено"
                 writer.write(response.encode('utf-8'))
                 await writer.drain()
@@ -47,8 +46,8 @@ class Router:
             # Виклик обробника маршруту
             print(f"Registered routes: {self.routes}")
             print(f"Requested path: {path}")
-            Log.send_log(f"Registered routes: {self.routes}")
-            Log.send_log(f"Requested path: {path}")
+            await Log.send_log(f"Registered routes: {self.routes}")
+            await Log.send_log(f"Requested path: {path}")
             if path in self.routes:
                 await self.routes[path](writer)
             else:
@@ -62,7 +61,7 @@ class Router:
         print(f"Restart called. Router._instance: {self}")
         await asyncio.start_server(self.__handle_request, "0.0.0.0", 80)
         print(f"OTA-server started on http://0.0.0.0:80")
-        Log.send_log(f"OTA-server started on http://0.0.0.0:80")
+        await Log.send_log(f"OTA-server started on http://0.0.0.0:80")
         while True:
             await asyncio.sleep(1) 
 
@@ -84,7 +83,7 @@ class Server:
             print('Server stoped')
         cls.server = await asyncio.start_server(Router.get_instance().__handle_request, "0.0.0.0", 80)
         print(f"OTA-server started on http://0.0.0.0:80 {cls.server}")
-        Log.send_log(f"OTA-server started on http://0.0.0.0:80")
+        await Log.send_log(f"OTA-server started on http://0.0.0.0:80")
         while True:
             await asyncio.sleep(1) 
 

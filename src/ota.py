@@ -39,7 +39,7 @@ class OTA:
         try:
             with open("/lib/nebula/config.py", "w") as f:
                 f.write(f'version = "{new_version}"\n')
-            await Log.send_log("Updated versioawaitn in config.py!")
+            await Log.send_log("Updated version in config.py!")
         except Exception as e:
             await Log.send_log(f"Update error in config.py: {e}")
             pass
