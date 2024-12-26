@@ -1,5 +1,4 @@
 import uasyncio as asyncio
-from .wifi import connectWiFi
 from .servers_interact.local import Router
 from .servers_interact.remote import Remote
 from .logs import Log
