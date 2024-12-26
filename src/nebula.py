@@ -12,7 +12,6 @@ class Nebula(Router):
         print(Nebula.connectWiFi(ssid, password))
         super().__init__()
         asyncio.create_task(self.start_async_tasks(server_ip))
-        self.ensure_event_loop_running()
 
     async def start_async_tasks(self, server_ip):
         """Запуск асинхронних завдань."""
@@ -41,11 +40,3 @@ class Nebula(Router):
             pass
         print('Wi-Fi підключено:', wifi.ifconfig())
         return wifi.ifconfig()
-
-    @staticmethod
-    def ensure_event_loop_running():
-        """Запускає цикл подій, якщо він ще не запущений."""
-        try:
-            asyncio.get_event_loop().run_forever()
-        except Exception as e:
-            print(f"Помилка під час запуску циклу подій: {e}")
