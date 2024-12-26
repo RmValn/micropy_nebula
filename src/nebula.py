@@ -28,6 +28,7 @@ class Nebula(Router):
         except Exception as e:
             print(f"Помилка під час виконання завдань: {e}")
         finally:
+            print('бля')
             # Запуск циклу подій після завершення ініціалізації
             self.run_event_loop()
 
