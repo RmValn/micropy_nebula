@@ -57,6 +57,7 @@ class OTA:
             if response.status_code == 200:
                 with open("main.py", "w") as f:
                     f.write(response.text)
+                print(response.text)
                 await Log.send_log("Flie main.py updated!")
                 await cls.update_config_version(new_version) 
                 response.close()
